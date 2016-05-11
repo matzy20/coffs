@@ -8,6 +8,7 @@
 var $        = require('gulp-load-plugins')();
 var argv     = require('yargs').argv;
 var gulp     = require('gulp');
+var sass     = require('gulp-sass');
 var rimraf   = require('rimraf');
 var router   = require('front-router');
 var sequence = require('run-sequence');

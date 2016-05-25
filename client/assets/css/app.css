@@ -6504,4 +6504,6 @@ blockquote p {
   float: none; }
 
 body {
-  background-image: url("/assets/img/lanikai.jpg"); }
+  background-image: url("/assets/img/lanikai.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }

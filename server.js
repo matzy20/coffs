@@ -31,9 +31,41 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//use mongoose to create Schema
-//confirm with Jon how seed files were created in Get A Life
-//using mongoose create DB, passport, and routes
+passport.use(new localStrategy (
+  {
+    passReqToCallback: true
+  },
+  function (req, username, password, done) {
+    console.log('searching...');
+    return User.findOne({
+      username: username
+    })
+      .then(function (user) {
+        console.log("user test", user);
+        if (user.password !== password) {
+          return done(null, false);
+        }
+        return done(null, user);
+      })
+        .catch(function (err) {
+          return done(null, false);
+        });
+  })
+);
+
+passport.serializeUser(function(user, done) {
+  return done(null, user.id);
+});
+
+passport.deserializeUser(function(userId, done) {
+  User.findById(userId)
+    .then(function(userId) {
+      if (!userId) {
+        return done(null, false);
+      }
+      return done(null, userId);
+    });
+});
 
 app.get('/', function(req, res){
   console.log("Hello Coffs!");

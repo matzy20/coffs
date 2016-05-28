@@ -7,6 +7,7 @@ var methodOverride = require('method-override');
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var session = require('express-session');
+// var isAuthenticated = require('../middleware/isAuthenticated');
 
 var app = express();
 
@@ -67,8 +68,50 @@ passport.deserializeUser(function(userId, done) {
     });
 });
 
-app.get('/', function(req, res){
-  console.log("Hello Coffs!");
+//TODO: re-add back 'isAuthenticated'
+//ERROR: couldn't find module, check if b/c no '/login' route created yet
+app.get('/api/users', function(req, res) {
+  User.find({}, function(err, users) {
+    if(err) {
+      res.send("can't find user");
+    }
+    res.json(users);
+  });
+});
+
+app.post('/register', function(req, res) {
+  var newUser = new User ({
+    username: req.body.username,
+    password: req.body.password
+  });
+  console.log(newUser);
+  newUser.save(function(err, event){
+    var userId = newUser._id;
+    res.json(event);
+  });
+});
+
+app.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+  if (err) {
+    return next(err);
+  }
+  if (!user) {
+    return res.status(401).json({
+      err: info
+    });
+  }
+  req.logIn(user, function(err) {
+    if (err) {
+      return res.status(500).json({
+        err: 'Could not log in user'
+      });
+    }
+    //Jon had a res.send({key: CONFIG.session.AUTH});
+    //Which we don't need due to no Social Media, yet ..
+    res.send('you\'ve successully logged in');
+  });
+  })(req, res, next);
 });
 
 app.listen(8079, function(){

@@ -6503,7 +6503,7 @@ blockquote p {
 .float-none {
   float: none; }
 
-body {
+.home-bg {
   background-image: url("/assets/img/lanikai.jpg");
   background-size: cover;
   background-repeat: no-repeat; }

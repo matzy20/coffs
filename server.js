@@ -91,7 +91,7 @@ app.post('/register', function(req, res) {
   });
 });
 
-app.post('/login', function(req, res, next) {
+app.post('/main', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
   if (err) {
     return next(err);

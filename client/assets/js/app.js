@@ -18,7 +18,8 @@
 
   function config($urlProvider, $locationProvider) {
 
-    $urlProvider.otherwise('/home');
+    $urlProvider
+    .otherwise('/home');
 
     $locationProvider.html5Mode({
       enabled:false,

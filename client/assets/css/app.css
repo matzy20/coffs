@@ -1569,6 +1569,7 @@ a, [ui-sref], [zf-open], [zf-close], [zf-toggle] {
   .card ul {
     margin-bottom: 0; }
   .card img {
+    height: 100%;
     width: 100%; }
   .card.primary {
     border: 0;
@@ -6503,7 +6504,4 @@ blockquote p {
 .float-none {
   float: none; }
 
-.home-bg {
-  background-image: url("/assets/img/lanikai.jpg");
-  background-size: cover;
-  background-repeat: no-repeat; }
+

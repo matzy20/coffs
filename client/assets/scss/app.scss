@@ -1,10 +1,15 @@
 @import "settings";
 @import "foundation";
 
-.home-bg {
+body, #home {
   background: url("/assets/img/lanikai.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
 
+//TODO: find a way to hid overlap when rotated
+// .rotate {
+//   -webkit-transform: rotate(90deg);
+//   transform: rotate(90deg);
+// }
 

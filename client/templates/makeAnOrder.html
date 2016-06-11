@@ -1,7 +1,37 @@
 ---
-title: Make An Order
+title: Order
 url: /order
 name: order
+cards:
+
+-
+    name: Vader
+    img: assets/img/coffs-vader.jpg
+    rotate: rotate
+    price: $8
+    color: dark
+-
+    name: Prototype
+    img: assets/img/coffs-prototype.jpg
+    price: $0
+    color: success
+-
+    name: Entire set of
+    img: assets/img/coffs-set.jpg
+    price: $65
+    color: dark
 ---
 
-<h3>Make An Order</h3>
+<div class="grid-block medium-up-3">
+  <div class="grid-content" ng-repeat="card in vars.cards">
+    <div class="card {{ card.color }}">
+    <img src="{{ card.img }}" class="{{ card.rotate }}">
+      <div class="card-divider">
+        {{ card.name }} sleeves at {{ card.price }}
+      </div>
+      <div class="card-section">
+        <h4>Description</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi iusto reprehenderit voluptatem odio deleniti provident aliquam qui magnam aspernatur necessitatibus.</p>
+      </div>
+  </div>
+</div>

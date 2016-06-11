@@ -7,10 +7,22 @@ body, #home {
   background-repeat: no-repeat;
 }
 
+.cardCustom {
+  background: #b5d5e3;
+}
+
 .customFont {
   font-family: fantasy;
-  text-align: center;
+  color: #06425C;
   padding-top: 0.5em;
+}
+
+.customFont-align-center {
+  text-align: center;
+}
+
+.menu-bar.primary {
+  background: #06425C;
 }
 
 //TODO: find a way to hid overlap when rotated
